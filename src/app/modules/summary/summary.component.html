@@ -1,0 +1,26 @@
+<div class="container mt-5 p-4 border rounded custom-form">
+  <h3 class="mb-3">Información básica</h3>
+
+  <div class="row" *ngIf="dataSummary; else noEncontrado">
+    <div class="col-12 mb-3">
+      <label for="firstSurname" class="text-muted mb-0">Primer apellido</label>
+      <input type="text" id="firstSurname" class="form-control" [value]="dataSummary.firstSurname" readonly />
+    </div>
+
+    <div class="col-12 mb-3">
+      <label for="firstName" class="text-muted mb-0">Primer nombre</label>
+      <input type="text" id="firstName" class="form-control" [value]="dataSummary.firstName" readonly />
+    </div>
+  </div>
+
+  <ng-template #noEncontrado>
+    <div class="alert alert-danger">{{ error }}</div>
+  </ng-template>
+
+  <div class="row">
+    <div class="col-12 mb-3">
+      <button class="btn btn-secondary w-100 rounded-pill mt-3" (click)="backToConsult()">Volver</button>
+    </div>
+  </div>
+
+</div>

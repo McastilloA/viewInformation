@@ -1,0 +1,43 @@
+<div class="container mt-5 p-4 border rounded custom-form">
+  <form [formGroup]="searchform" (ngSubmit)="searchDocument()">
+    <div class="mb-2 text-muted">
+      <small>Todos los campos son obligatorios</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="typeDoc" class="text-primary mb-0">Tipo de documento</label>
+      <select id="typeDoc" class="form-control" formControlName="typeDoc">
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option *ngFor="let type of listDocuments" [value]="type.value">{{ type.label }}</option>
+      </select>
+      <div *ngIf="searchFormControl['typeDoc'].errors && searchFormControl['typeDoc'].touched" class="text-danger">
+        <small>El tipo de documento es obligatorio.</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="numberDocument" class="text-primary mb-0">Número de documento</label>
+      <input type="text" id="numberDocument" class="form-control" formControlName="document"
+        (input)="formatDocument()" />
+
+      <ul *ngIf="searchFormControl['document'].errors && searchFormControl['document'].touched" class="text-danger p-0">
+        <li *ngIf="searchFormControl['document'].errors['required']">
+          <small>El número de documento es obligatorio.</small>
+        </li>
+        <li *ngIf="searchFormControl['document'].errors['minlength']">
+          <small>El número de documento debe tener al menos 8 dígitos.</small>
+        </li>
+        <li *ngIf="searchFormControl['document'].errors['maxlength']">
+          <small>El número de documento no puede exceder 11 dígitos.</small>
+        </li>
+        <li *ngIf="searchFormControl['document'].errors['pattern']">
+          <small>El número de documento solo debe contener números.</small>
+        </li>
+      </ul>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 rounded-pill" [disabled]="searchform.invalid">
+      Buscar
+    </button>
+  </form>
+</div>

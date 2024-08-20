@@ -1,0 +1,18 @@
+[
+  {
+    "typeDocument": "cc",
+    "document": "23445322",
+    "firstName": "Miguel",
+    "secondName": "Alejandro",
+    "firstSurname": "Castillo",
+    "SecondName": ""
+  },
+  {
+    "typeDocument": "ps",
+    "document": "23445321",
+    "firstName": "Carlos",
+    "secondName": "Alberto",
+    "firstSurname": "Pertuz",
+    "SecondName": "Perez"
+  }
+]
